@@ -113,7 +113,7 @@ func initDB() error {
 	// Use the "file::memory:?cache=shared" data source name to use an in-memory database
 	// for testing, but for persistence, provide a file path like "./socialbarrier.db".
 	var err error
-	db, err = sql.Open("sqlite3", "./socialbarrier.db") // Use a file path for persistence
+	db, err = sql.Open("sqlite3", "/data/socialbarrier.db") // Use a file path for persistence
 	if err != nil {
 		return fmt.Errorf("failed to open database: %w", err)
 	}

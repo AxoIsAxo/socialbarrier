@@ -1,17 +1,17 @@
-# fly.toml app configuration file generated for socialbarrier on 2025-06-27T23:52:19Z
+# fly.toml app configuration file generated for socialbarrier on 2025-06-30T19:13:55+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'socialbarrier'
-primary_region = 'fra'
+primary_region = 'ams'
 
 [build]
-  [build.args]
-    GO_VERSION = '1.24.3'
+  builder = 'paketobuildpacks/builder-jammy-base'
 
-[env]
-  PORT = '8080'
+[[mounts]]
+  source = 'socialbarrier_data'
+  destination = '/data'
 
 [http_service]
   internal_port = 8080
@@ -22,7 +22,6 @@ primary_region = 'fra'
   processes = ['app']
 
 [[vm]]
-  memory = '1gb'
+  memory = '512mb'
   cpu_kind = 'shared'
   cpus = 1
-  memory_mb = 1024
